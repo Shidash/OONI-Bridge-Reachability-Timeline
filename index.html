@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+
+        <meta charset="UTF-8">
+
+        <title>Tor bridge reachability graphs</title>
+
+        <script src="static/jquery.js"></script>
+        <script src="static/jquery-ui.js"></script>
+        <script src='static/nprogress.js'></script>
+        <script src="static/bridges.js"></script>
+
+        <link rel="stylesheet" href="static/bootstrap.css">
+        <link rel='stylesheet' href='static/nprogress.css'/>
+        <link rel="stylesheet" href="static/jquery-ui.css">
+        <link rel="stylesheet" href="static/main.css">
+
+
+    </head>
+
+    <body>
+
+        <div id="container">
+
+            <div id="bridge_results">
+
+                <header>
+                    <h1>Tor bridge reachability pixels</h1>
+                </header>
+
+                <div class="timelines">
+                    <h2>1. Reachability timelines per country</h2>
+                    <ul>
+                        <li>Reports are ordered chronologically</li>
+                        <li><a href="data/tests/bridge_reachability/per_bridge/data.json"
+                        target="_blank">Compiled JSON data file</a></li>
+                        <li>Hover over report to see data, click on report to
+                        open source report file</li>
+                        <li>Green = reachable, red = not reachable</li>
+                        <li>Null success values have been excluded</li>
+                        <li>Results with no start time have the parent report
+                        time as start time</li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+</html>

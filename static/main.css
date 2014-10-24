@@ -1,0 +1,194 @@
+@font-face {
+    font-family: opensans_light;
+    src: url(fonts/OpenSans-Light.ttf);
+}
+@font-face {
+    font-family: opensans_regular;
+    src: url(fonts/OpenSans-Regular.ttf);
+}
+body{
+    font-family: opensans_light, Arial, sans;
+    color: #7A7A7A;
+}
+.bridge_title{
+    float: left;
+    margin-right: 20px;
+    width: 175px;
+    text-align:left;
+    font-size: 13px;
+    background: url(images/road_small.png) no-repeat 0px 5px;
+    padding-left: 20px;
+    color: #4B5E58;
+}
+.result_entry{
+    height: 10px;
+    width: 5px;
+    background: #ccc;
+    float: left;
+    margin-right: 1px;
+    border-radius: 2px;
+    margin-bottom: 10px;
+    position: relative;
+    top: 5px;
+}
+.bridge_result{
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.yes{
+    background: #6EDF52;
+}
+.no{
+    background: #DF5252;
+}
+.probably_no{
+    background: #DFB552;
+}
+header{
+    text-align: left;
+    margin: 40px 0;
+}
+header{
+    font-family: opensans_light, Arial, sans;
+}
+header h1{
+    font-size: 4em;
+    color: #3D3D3D;
+}
+#bridge_results{
+    display: inline-block;
+    zoom: 1;
+    display*: inline; /* ie hack */
+    min-width: 900px;
+    text-align:left;
+    max-width: 1050px;
+}
+.country{
+    background: #F7FAF9;
+    padding: 30px;
+    padding-top: 10px;
+    margin-bottom: 50px;
+}
+.donuts{
+    background: #F5FAF8;
+    padding: 30px;
+    padding-top: 50px;
+}
+h2{
+    margin: 10px 0;
+    background: url(images/charts_small.png) no-repeat 5px 10px;
+    padding-left: 40px;
+}
+.timelines, .transports, .transport_graph{
+    margin-bottom: 40px;
+    background-color: #F7FAF9;
+    padding: 10px 10px 10px 20px;
+    border-radius: 4px;
+}
+.timelines ul, .transports ul{
+    margin-top: 20px;
+    margin-left: 25px;
+}
+.transports, .transport_graph{
+    background: #FCFBF7;
+}
+.multiline .country, .multi_graphs{
+    background: #FCFAFC;
+}
+h3{
+    margin-bottom: 30px;
+    color: #58A38A;
+}
+#container{
+    text-align:center;
+}
+.ui-tooltip {
+    padding: 8px 16px;
+    opacity: 0.9;
+    position: absolute;
+    z-index: 9999;
+    font-size: 11px;
+    max-width: 500px;
+    word-wrap: break-word;
+}
+body .ui-tooltip {
+    border-width: 1px;
+    border-color: #D4D4D4;
+    font-size: 11px;
+    color: #7A7A7A;
+    font-family: opensans_regular, Arial, sans;
+    line-height: 1.5em;
+}
+.result_item{
+    cursor:pointer;
+}
+.hr{
+    color: #F2F2F2;
+    height: 1px;
+    clear:both;
+}
+.date_indicator{
+    position: absolute;
+    margin-top: 18px;
+    font-size: 0.7em;
+}
+.tooltip_date{
+    font-size: 13px;
+    color: #525252;
+    margin: 10px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: steelblue;
+}
+
+.x.axis path {
+  display: none;
+}
+.transport_charts, .multiline{
+    max-width:960px;
+}
+
+
+.multiline_graphs .axis path,
+.multiline_graphs .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.multiline_graphs .x.axis path {
+  display: none;
+}
+
+.multiline_graphs .line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+.multiline, donuts{
+    font-size: 11px;
+}
+.multiline .graph_title, .donuts{
+    font-weight:bold;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+.donut_graphs{
+    background: #F5FAF8;
+}
+.pie{
+    margin-right: 5px;
+    height: 190px;
+    font-size: 11px;
+}
