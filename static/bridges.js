@@ -26,7 +26,7 @@ $( document ).ready(function(){
 		    $.each(transports, function(transportName, bridges){
 		        if(Object.getOwnPropertyNames(bridges).length != 0){
 
-			    $("#bridge_results").append("<div class='transport "+cc+transportName+"'>");
+			    $("."+cc).append("<div class='transport "+cc+transportName+"'>");
                             $("."+cc+transportName).append("<h4>"+transportName+"</h4>");
 
 			    // for every transport in the country
@@ -72,20 +72,19 @@ $( document ).ready(function(){
                                 }
 
 			     }
-
-                             $("."+cc+transportName).append("<hr />"); 
+ 
 			     counter+=1;
 			 });
 			    }
 			}
-			$("#bridge_results").append("</div>");
+			$("."+cc).append("</div>");
 			
 		    });
 	    }
 
 		    $("#bridge_results").append("</div>");
-	      });
-
+	});
+    
         NProgress.done();
 
     });
