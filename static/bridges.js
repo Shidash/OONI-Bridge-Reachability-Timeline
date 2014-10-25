@@ -12,65 +12,79 @@ $( document ).ready(function(){
 
     var counter=0;
 
-    $.getJSON("data/tests/bridge_reachability/per_bridge/data.json", function(report_data){
+    $.getJSON("parsing/grouped.json", function(report_data){
 
-        $.each(report_data, function(cc, bridges) {
+        $.each(report_data, function(cc, transports) {
 
-            if(Object.getOwnPropertyNames(bridges).length != 0){
+            if(Object.getOwnPropertyNames(transports).length != 0){
 
                 // for every country
 
                 $("#bridge_results").append("<div class='country "+cc+"'>");
                 $("."+cc).append("<h3>"+cc+"</h3>");
 
-                $.each(bridges, function(key, reports) {
+		    $.each(transports, function(transportName, bridges){
+		        if(Object.getOwnPropertyNames(bridges).length != 0){
 
-                    // for each bridge in the country
-                    $("."+cc).append("<div class='bridge_title'>"+key+"</div>")
-                    $("."+cc).append("<div class='bridge_result bridge"+counter+"'>")
+			    $("#bridge_results").append("<div class='transport "+cc+transportName+"'>");
+                            $("."+cc+transportName).append("<h4>"+transportName+"</h4>");
 
-                    reports.sort(function(a, b) {
-                        return new Date(a.start_time) - new Date(b.start_time);
-                    })
+			    // for every transport in the country
+			    
+			    for(j=0; j < bridges.length; j++){
 
-                    for(i=0; i<reports.length; i++){
+                         $.each(bridges[j], function(key, reports) {
 
-                        // for all the reports of each bridge in this country
+                             // for each bridge of that transport type in the country
+                             $("."+cc+transportName).append("<div class='bridge_title'>"+key+"</div>")
+                             $("."+cc+transportName).append("<div class='bridge_result bridge"+counter+"'>")
 
-                        if(reports[i].success){
-                            var color_class = "yes";
-                        }
-                        if(!reports[i].success){
-                            var color_class = "no";
-                        }
-                        if(typeof(reports[i].start_time) == "undefined"){
-                            var color_class = "probably_no";
-                        }
-                        var label = "<div class='tooltip_date'>"+new Date(reports[i].start_time*1000)+"</div>";
+                             reports.sort(function(a, b) {
+                                return new Date(a.start_time) - new Date(b.start_time);
+                             })
 
-                        $.each(reports[i], function(k, v) {
-                            label += "<li>"
-                            label += k+ " : "+v
-                            label += "</li>"
-                        })
-                        var full_url = reports[i].file_url
-                        var entry = $("<div onclick='window.open(\""+full_url+"\")' title='' class='result_item result_entry "+counter+" "+color_class+"'></div>");
-                        $(".bridge"+counter).append(entry)
-                        $(entry).prop('title', label);
-                        if(i%15 == 0){
-                            $(".bridge"+counter).append("<div style='margin-left:"+i*6.2+"px' class='date_indicator'>"+new Date(reports[i].start_time*1000).yyyymmdd()+"</div>")
-                        }
+                             for(i=0; i<reports.length; i++){
 
-                    }
+                                // for all the reports of each bridge in this country
 
-                    $("."+cc).append("<hr />")
-                    counter+=1;
-                });
-            }
+                                if(reports[i].success){
+                                   var color_class = "yes";
+                                }
+                                if(!reports[i].success){
+                                  var color_class = "no";
+                                }
+                                if(typeof(reports[i].start_time) == "undefined"){
+                                  var color_class = "probably_no";
+                                }
+                                var label = "<div class='tooltip_date'>"+new Date(reports[i].start_time*1000)+"</div>";
 
-            $("#bridge_results").append("</div>")
+                                $.each(reports[i], function(k, v) {
+                                   label += "<li>"
+                                   label += k+ " : "+v
+                                   label += "</li>"
+                                })
+                                var full_url = reports[i].file_url
+                                var entry = $("<div onclick='window.open(\""+full_url+"\")' title='' class='result_item result_entry "+counter+" "+color_class+"'></div>");
+                                $(".bridge"+counter).append(entry)
+                                $(entry).prop('title', label);
+                                if(i%15 == 0){
+                                   $(".bridge"+counter).append("<div style='margin-left:"+i*6.2+"px' class='date_indicator'>"+new Date(reports[i].start_time*1000).yyyymmdd()+"</div>")
+                                }
 
-        });
+			     }
+
+                             $("."+cc+transportName).append("<hr />"); 
+			     counter+=1;
+			 });
+			    }
+			}
+			$("#bridge_results").append("</div>");
+			
+		    });
+	    }
+
+		    $("#bridge_results").append("</div>");
+	      });
 
         NProgress.done();
 
