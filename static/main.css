@@ -20,6 +20,19 @@ body{
     padding-left: 20px;
     color: #4B5E58;
 }
+
+h4 {
+    float: left;
+    text-align: left;
+    display: inline-block;
+}
+
+.transport_summary{
+    padding-top: 10px;
+    margin-left: 193px;
+    overflow: hidden;
+}
+
 .result_entry{
     height: 10px;
     width: 5px;
@@ -27,20 +40,25 @@ body{
     float: left;
     margin-right: 1px;
     border-radius: 2px;
-    margin-bottom: 10px;
     position: relative;
     top: 5px;
+    margin-bottom: 5px;
 }
 .bridge_result{
     overflow: hidden;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 .yes{
-    background: #6EDF52;
+    background: #00ff00;
 }
 .no{
-    background: #DF5252;
+    background: #ff0000;
 }
+
+.maybe{
+    background: #ffff00;
+}
+
 .probably_no{
     background: #DFB552;
 }

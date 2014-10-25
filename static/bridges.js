@@ -26,11 +26,42 @@ $( document ).ready(function(){
 		    $.each(transports, function(transportName, bridges){
 		        if(Object.getOwnPropertyNames(bridges).length != 0){
 
+			    // for every transport in the country
 			    $("."+cc).append("<div class='transport "+cc+transportName+"'>");
                             $("."+cc+transportName).append("<h4>"+transportName+"</h4>");
+			    $("."+cc+transportName).append("<div class='transport_summary transport"+cc+transportName+"'>");
 
-			    // for every transport in the country
-			    
+			    // Summary data per transport
+			    $.getJSON("parsing/summarized.json", function(summary_data){
+				var summaryForTransport = summary_data[cc][transportName];
+				summaryForTransport.sort(function(a, b){
+				    return new Date(Object.keys(a)) - new Date(Object.keys(b));
+				})
+				console.log("Length for Country "+cc+ " is "+summaryForTransport.length);
+				for(k=0; k<summaryForTransport.length; k++){
+				    var summaryColor = summaryForTransport[k][Object.keys(summaryForTransport[k])];
+				    if(summaryColor == "green"){
+					var color_class = "yes";
+                                    }
+                                    if(summaryColor == "red"){
+					var color_class = "no";
+                                    }
+				    if(summaryColor == "orange"){
+					var color_class = "maybe";
+				    }
+                                    
+                                    var label = "<div class='tooltip_date'>"+new Date(Object.keys(summaryForTransport[k]))+"</div>";
+				    var entry = $("<div title='' class='result_item result_entry transportsum"+cc+transportName+" "+color_class+"'></div>");
+                                    $(".transport"+cc+transportName).append(entry);
+				    $(entry).prop('title', label);
+				    if(k%15 == 0){
+					$(".transport"+cc+transportName).append("<div style='margin-left:"+k*5.5+"px' class='date_indicator'>"+new Date(Object.keys(summaryForTransport[k])).yyyymmdd()+"</div>")
+				    }
+
+				}
+			    });
+			    $("."+cc+transportName).append("</div><br />");
+
 			    for(j=0; j < bridges.length; j++){
 
                          $.each(bridges[j], function(key, reports) {
@@ -67,17 +98,13 @@ $( document ).ready(function(){
                                 var entry = $("<div onclick='window.open(\""+full_url+"\")' title='' class='result_item result_entry "+counter+" "+color_class+"'></div>");
                                 $(".bridge"+counter).append(entry)
                                 $(entry).prop('title', label);
-                                if(i%15 == 0){
-                                   $(".bridge"+counter).append("<div style='margin-left:"+i*6.2+"px' class='date_indicator'>"+new Date(reports[i].start_time*1000).yyyymmdd()+"</div>")
-                                }
-
 			     }
  
 			     counter+=1;
 			 });
 			    }
 			}
-			$("."+cc).append("</div>");
+			$("."+cc).append("</div><br /><br />");
 			
 		    });
 	    }

@@ -80,4 +80,4 @@ class Summarize
 end
 
 s = Summarize.new(File.read("../data/tests/bridge_reachability/per_bridge/data.json"))
-puts s.groupByTransport
+s.summarize
