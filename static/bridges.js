@@ -1,5 +1,5 @@
 $( document ).ready(function(){
-    $("#infobox").on("click", function(d){
+    $("#contract").on("click", function(d){
       $("#infobox").hide();
       $("#showinfo").show();
     });
@@ -63,7 +63,7 @@ $( document ).ready(function(){
 
 				}
 			    });
-			    $("."+cc+transportName).append("<h4 style='display: inline-block; float: right;' id='transportContent"+cc+transportName+"_toggler'>+</h4></div><br />");
+			    $("."+cc+transportName).append("<h4 style='display: inline-block; float: right; font-weight: bold;' id='transportContent"+cc+transportName+"_toggler'>+</h4></div><br />");
                             $("."+cc+transportName).append("<div class='transport_reports transportContent"+cc+transportName+"'>");
 			    $(".transportContent"+cc+transportName).hide();
 
@@ -145,8 +145,14 @@ $(this).on("mouseenter", function(d) {
       var lastclass = classes[classes.length-1];
       $('.'+lastclass).css("border", "2px solid orange").css("width", "8px");
       
-      var classarr = lastclass.split("_");
-      var element = $(d.target).data('label');
+	var classarr = lastclass.split("_");
+	var element = $(d.target).data('label');
+	if(d.target.className.indexOf("transportsum") == -1){
+	    console.log(d.target.className);
+            $("#showinfo").hide();
+	    $("#infobox").show();
+	}
+
 
       $.each(element, function(key, value) {
           if (key === "start_time" || key === "tcp_connect_start_time") {
