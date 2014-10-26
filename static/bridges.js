@@ -55,15 +55,17 @@ $( document ).ready(function(){
 
 				}
 			    });
-			    $("."+cc+transportName).append("</div><br />");
+			    $("."+cc+transportName).append("<h4 style='display: inline-block; float: right;' id='transportContent"+cc+transportName+"_toggler'>+</h4></div><br />");
+                            $("."+cc+transportName).append("<div class='transport_reports transportContent"+cc+transportName+"'>");
+			    $(".transportContent"+cc+transportName).hide();
 
 			    for(j=0; j < bridges.length; j++){
 
                          $.each(bridges[j], function(key, reports) {
 
                              // for each bridge of that transport type in the country
-                             $("."+cc+transportName).append("<div class='bridge_title'>"+key+"</div>")
-                             $("."+cc+transportName).append("<div class='bridge_result bridge"+counter+"'>")
+                             $(".transportContent"+cc+transportName).append("<div class='bridge_title'>"+key+"</div>")
+                             $(".transportContent"+cc+transportName).append("<div class='bridge_result bridge"+counter+"'>")
 
                              reports.sort(function(a, b) {
                                 return new Date(a.start_time) - new Date(b.start_time);
@@ -103,8 +105,9 @@ $( document ).ready(function(){
 			 });
 			    }
 			}
-			$("."+cc+transportName).append("<br /><div class='hover"+cc+transportName+"'></div><br />");
-			$("."+cc).append("</div><br /><br />");
+			$(".transportContent"+cc+transportName).append("<br /><br /></div>");
+			$("."+cc+transportName).append("</div><div class='hover"+cc+transportName+"'></div>");
+			$("."+cc).append("</div>");
 			
 		    });
 	    }
@@ -120,6 +123,7 @@ $( document ).ready(function(){
 })
 
 
+// Highlighting and showing text on hover
 $(this).on("mouseenter", function(d) {
     var classes = d.target.className.split(" ");
     var lastclass = classes[classes.length-1];
@@ -139,11 +143,25 @@ $(this).on("mouseenter", function(d) {
 	var classes = d.target.className.split(" ");
 	var lastclass = classes[classes.length-2];
 	if(lastclass.indexOf("hClass") > -1){
-	    console.log(lastclass);
 	    $('.'+lastclass).css("width", "5px").css("border", "");
 	    $("#highlighttext").remove();
 	}
     });
+
+
+// Expand and contract details
+$(this).on("click", function(d) {
+    id = d.target.id.split("_");
+    if(d.target.id.indexOf("toggler") > -1){
+	if($('.'+id[0]).is(":visible")){
+	    $('.'+id[0]).hide();
+	    $('#'+d.target.id).text("+");
+	} else {
+	    $('.'+id[0]).show();
+	    $('#'+d.target.id).text("-");
+	}
+    }
+});
 
 Date.prototype.yyyymmdd = function() {
     var yyyy = this.getFullYear().toString();
