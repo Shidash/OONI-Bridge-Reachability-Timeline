@@ -1,5 +1,13 @@
 $( document ).ready(function(){
+    $("#infobox").on("click", function(d){
+      $("#infobox").hide();
+      $("#showinfo").show();
+    });
 
+    $("#showinfo").on("click", function(d){
+      $("#showinfo").hide();
+      $("#infobox").show();
+    });
     NProgress.configure({ ease: 'ease', speed: 500 });
     NProgress.start();
 
@@ -169,6 +177,8 @@ $(this).on("click", function(d) {
 	}
     }
 });
+
+
 
 Date.prototype.yyyymmdd = function() {
     var yyyy = this.getFullYear().toString();
