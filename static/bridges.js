@@ -3,17 +3,10 @@ $( document ).ready(function(){
     NProgress.configure({ ease: 'ease', speed: 500 });
     NProgress.start();
 
-    $(document).tooltip({
-      content: function () {
-          return $(this).prop('title');
-      },
-      show: { duration: 200 }
-    });
-
     var counter=0;
 
     $.getJSON("parsing/grouped.json", function(report_data){
-
+	
         $.each(report_data, function(cc, transports) {
 
             if(Object.getOwnPropertyNames(transports).length != 0){
@@ -37,7 +30,7 @@ $( document ).ready(function(){
 				summaryForTransport.sort(function(a, b){
 				    return new Date(Object.keys(a)) - new Date(Object.keys(b));
 				})
-				console.log("Length for Country "+cc+ " is "+summaryForTransport.length);
+				
 				for(k=0; k<summaryForTransport.length; k++){
 				    var summaryColor = summaryForTransport[k][Object.keys(summaryForTransport[k])];
 				    if(summaryColor == "green"){
@@ -49,11 +42,13 @@ $( document ).ready(function(){
 				    if(summaryColor == "orange"){
 					var color_class = "maybe";
 				    }
-                                    
+
+				   // Setting labels and classes
+                                    var datestring = new Date(Object.keys(summaryForTransport[k])).yyyymmdd();
                                     var label = "<div class='tooltip_date'>"+new Date(Object.keys(summaryForTransport[k]))+"</div>";
-				    var entry = $("<div title='' class='result_item result_entry transportsum"+cc+transportName+" "+color_class+"'></div>");
+				    var entry = $("<div title='' class='result_item result_entry transportsum"+cc+transportName+" "+color_class+" hClass" +datestring+"_"+cc+transportName+"'></div>");
                                     $(".transport"+cc+transportName).append(entry);
-				    $(entry).prop('title', label);
+				    $(entry).data('label', label);
 				    if(k%15 == 0){
 					$(".transport"+cc+transportName).append("<div style='margin-left:"+k*5.5+"px' class='date_indicator'>"+new Date(Object.keys(summaryForTransport[k])).yyyymmdd()+"</div>")
 				    }
@@ -73,11 +68,12 @@ $( document ).ready(function(){
                              reports.sort(function(a, b) {
                                 return new Date(a.start_time) - new Date(b.start_time);
                              })
+			     
 
                              for(i=0; i<reports.length; i++){
 
                                 // for all the reports of each bridge in this country
-
+				var datestring = new Date(reports[i].start_time*1000).yyyymmdd();
                                 if(reports[i].success){
                                    var color_class = "yes";
                                 }
@@ -94,16 +90,20 @@ $( document ).ready(function(){
                                    label += k+ " : "+v
                                    label += "</li>"
                                 })
-                                var full_url = reports[i].file_url
-                                var entry = $("<div onclick='window.open(\""+full_url+"\")' title='' class='result_item result_entry "+counter+" "+color_class+"'></div>");
-                                $(".bridge"+counter).append(entry)
-                                $(entry).prop('title', label);
+                                var full_url = reports[i].file_url;
+				var classname = "hClass" +datestring+"_"+cc+transportName;
+				 
+                                var entry = $("<div onclick='window.open(\""+full_url+"\")' title='' class='result_item result_entry "+counter+" "+color_class+" "+classname+"'></div>");
+                                 $(".bridge"+counter).append(entry);
+
+				 $(entry).data('label', label);
 			     }
  
 			     counter+=1;
 			 });
 			    }
 			}
+			$("."+cc+transportName).append("<br /><div class='hover"+cc+transportName+"'></div><br />");
 			$("."+cc).append("</div><br /><br />");
 			
 		    });
@@ -118,6 +118,32 @@ $( document ).ready(function(){
 
 
 })
+
+
+$(this).on("mouseenter", function(d) {
+    var classes = d.target.className.split(" ");
+    var lastclass = classes[classes.length-1];
+    
+    if(lastclass.indexOf("hClass") > -1){
+	$('.'+lastclass).addClass("highlight")
+	$('.'+lastclass).css("border", "2px solid orange").css("width", "8px");
+	
+	var classarr = lastclass.split("_");
+	var element = $(d.target).data('label');
+
+	$(".hover"+classarr[1]).append("<span id=highlighttext>"+element+"</span>");
+    }
+
+})
+    .on("mouseleave", function(d) {
+	var classes = d.target.className.split(" ");
+	var lastclass = classes[classes.length-2];
+	if(lastclass.indexOf("hClass") > -1){
+	    console.log(lastclass);
+	    $('.'+lastclass).css("width", "5px").css("border", "");
+	    $("#highlighttext").remove();
+	}
+    });
 
 Date.prototype.yyyymmdd = function() {
     var yyyy = this.getFullYear().toString();

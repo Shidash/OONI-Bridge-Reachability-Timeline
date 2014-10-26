@@ -27,6 +27,11 @@ h4 {
     display: inline-block;
 }
 
+#highlighttext{
+    overflow: hidden;
+    width: 300px;
+}
+
 .transport_summary{
     padding-top: 10px;
     margin-left: 193px;
