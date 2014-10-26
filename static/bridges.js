@@ -127,9 +127,8 @@ $( document ).ready(function(){
 $(this).on("mouseenter", function(d) {
     var classes = d.target.className.split(" ");
     
-    if(classes.indexOf("hClass") > -1){
+    if(d.target.className.indexOf("hClass") > -1){
 	var lastclass = classes[classes.length-1];
-	console.log(lastclass);
 	$('.'+lastclass).css("border", "2px solid orange").css("width", "8px");
 	
 	var classarr = lastclass.split("_");
@@ -142,7 +141,7 @@ $(this).on("mouseenter", function(d) {
     .on("mouseleave", function(d) {
 	var classes = d.target.className.split(" ");
 
-	if(classes.indexOf("hClass") > -1){
+	if(d.target.className.indexOf("hClass") > -1){
 	    var lastclass = classes[classes.length-1];
 	    $('.'+lastclass).css("width", "5px").css("border", "");
 	    $("#highlighttext").remove();
