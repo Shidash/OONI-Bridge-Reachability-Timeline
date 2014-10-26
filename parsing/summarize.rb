@@ -1,5 +1,6 @@
 require 'json'
 require 'date'
+require 'open-uri'
 
 # Summarizes the bridges by transport
 class Summarize
@@ -79,8 +80,9 @@ class Summarize
   end
 end
 
-g = Summarize.new(File.read("../data/bridges-by-country-code.json"))
+file = File.read(open("http://reports.ooni.nu/bridges-by-country-code.json"))
+g = Summarize.new(file)
 File.write("grouped.json", g.groupByTransport)
 
-s = Summarize.new(File.read("../data/bridges-by-country-code.json"))
+s = Summarize.new(file)
 File.write("summarized.json", s.summarize)
