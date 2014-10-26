@@ -15,10 +15,11 @@ body{
     margin-right: 20px;
     width: 175px;
     text-align:left;
-    font-size: 13px;
+    font-size: 11px;
     background: url(images/road_small.png) no-repeat 0px 5px;
     padding-left: 20px;
     color: #4B5E58;
+    diplay: inline-block;
 }
 
 h4 {
@@ -34,7 +35,7 @@ h4 {
 
 .transport_summary{
     padding-top: 10px;
-    margin-left: 193px;
+    margin-left: 120px;
     overflow: hidden;
 }
 
@@ -51,6 +52,7 @@ h4 {
 }
 .bridge_result{
     overflow: hidden;
+    padding-left: 75px;
     margin-bottom: 5px;
 }
 .yes{
