@@ -35,7 +35,7 @@ h4 {
 
 .transport_summary{
     padding-top: 10px;
-    margin-left: 120px;
+    margin-left: 270px;
     overflow: hidden;
 }
 
@@ -60,6 +60,14 @@ h4 {
 }
 .no{
     background: #ff0000;
+}
+
+.offline{
+    background: #FFA500;
+}
+
+.inconsistent{
+    background: #4B0082;
 }
 
 .maybe{

@@ -76,12 +76,18 @@ $( document ).ready(function(){
 
                                 // for all the reports of each bridge in this country
 				var datestring = new Date(reports[i].start_time*1000).yyyymmdd();
-                                if(reports[i].success){
+                                if(reports[i].status == "ok"){
                                    var color_class = "yes";
                                 }
-                                if(!reports[i].success){
+                                if(reports[i].status == "blocked"){
                                   var color_class = "no";
                                 }
+				if(reports[i].status == "offline"){
+				    var color_class = "offline";
+				}
+				if(reports[i].status == "inconsistent" || reports[i].status == "invalid"){
+				    var color_class = "inconsistent";
+				}
                                 if(typeof(reports[i].start_time) == "undefined"){
                                   var color_class = "probably_no";
                                 }
@@ -127,9 +133,8 @@ $( document ).ready(function(){
 $(this).on("mouseenter", function(d) {
     var classes = d.target.className.split(" ");
     
-    if(classes.indexOf("hClass") > -1){
+    if(d.target.className.indexOf("hClass") > -1){
 	var lastclass = classes[classes.length-1];
-	console.log(lastclass);
 	$('.'+lastclass).css("border", "2px solid orange").css("width", "8px");
 	
 	var classarr = lastclass.split("_");
@@ -142,7 +147,7 @@ $(this).on("mouseenter", function(d) {
     .on("mouseleave", function(d) {
 	var classes = d.target.className.split(" ");
 
-	if(classes.indexOf("hClass") > -1){
+	if(d.target.className.indexOf("hClass") > -1){
 	    var lastclass = classes[classes.length-1];
 	    $('.'+lastclass).css("width", "5px").css("border", "");
 	    $("#highlighttext").remove();

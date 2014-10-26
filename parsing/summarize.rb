@@ -79,8 +79,8 @@ class Summarize
   end
 end
 
-g = Summarize.new(File.read("../data/tests/bridge_reachability/per_bridge/data.json"))
+g = Summarize.new(File.read("../data/bridges-by-country-code.json"))
 File.write("grouped.json", g.groupByTransport)
 
-s = Summarize.new(File.read("../data/tests/bridge_reachability/per_bridge/data.json"))
+s = Summarize.new(File.read("../data/bridges-by-country-code.json"))
 File.write("summarized.json", s.summarize)
