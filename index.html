@@ -4,7 +4,7 @@
 
         <meta charset="UTF-8">
 
-        <title>Tor bridge reachability graphs</title>
+        <title>Tor Bridge Reachability Timeline</title>
 
         <script src="static/jquery.js"></script>
         <script src="static/jquery-ui.js"></script>
@@ -26,22 +26,36 @@
             <div id="bridge_results">
 
                 <header>
-                    <h1>Tor bridge reachability pixels</h1>
+                    <h1>Tor Bridge Reachability Timeline</h1>
                 </header>
+		<div class="timelines">
+		  <h2>Explanation</h2>
+		  <ul>
+		    <li>Reports are ordered chonologically and grouped by
+		    country and pluggable transport</li>
+		    <li>Row at top summarizes results for pluggable transports
+		    of a given type in a given country</li>
+		    <li>Click the + sign to see bridge-specific reports</li>
+		    <li>Hover over reports to see data below and other reports from
+		    same day highlighted</li>
+		  </ul>
+		</div>
 
                 <div class="timelines">
-                    <h2>1. Reachability timelines per country</h2>
+                    <h2>Color Codes</h2>
                     <ul>
-                        <li>Reports are ordered chronologically</li>
-                        <li><a href="data/tests/bridge_reachability/per_bridge/data.json"
-                        target="_blank">Compiled JSON data file</a></li>
-                        <li>Hover over report to see data, click on report to
-                        open source report file</li>
-                        <li>Green = reachable, red = not reachable</li>
-                        <li>Null success values have been excluded</li>
-                        <li>Results with no start time have the parent report
-                        time as start time</li>
-                    </ul>
+		      <li>Green = Bridge is reachable (or in summary, all
+		      bridges are reachable)</li>
+		      <li>Red = Bridge is blocked (or in summary, all bridges
+		      are blocked</li>
+		      <li>Yellow = Some of the bridges in the set are
+		      reachable, some are blocked</li>
+		      <li>Orange = Bridge is down (in both control and test
+		      cases)</li>
+		      <li>Purple = Inconsistent or invalid results (up in test
+		      cases and down in control, incomplete, etc.)</li>
+		      <li>Grey = No data</li>
+		    </ul>
                 </div>
 
             </div>

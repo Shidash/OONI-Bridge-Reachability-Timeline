@@ -76,12 +76,18 @@ $( document ).ready(function(){
 
                                 // for all the reports of each bridge in this country
 				var datestring = new Date(reports[i].start_time*1000).yyyymmdd();
-                                if(reports[i].success){
+                                if(reports[i].status == "ok"){
                                    var color_class = "yes";
                                 }
-                                if(!reports[i].success){
+                                if(reports[i].status == "blocked"){
                                   var color_class = "no";
                                 }
+				if(reports[i].status == "offline"){
+				    var color_class = "offline";
+				}
+				if(reports[i].status == "inconsistent" || reports[i].status == "invalid"){
+				    var color_class = "inconsistent";
+				}
                                 if(typeof(reports[i].start_time) == "undefined"){
                                   var color_class = "probably_no";
                                 }

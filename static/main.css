@@ -62,6 +62,14 @@ h4 {
     background: #ff0000;
 }
 
+.offline{
+    background: #FFA500;
+}
+
+.inconsistent{
+    background: #4B0082;
+}
+
 .maybe{
     background: #ffff00;
 }
