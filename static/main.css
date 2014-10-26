@@ -10,6 +10,17 @@ body{
     font-family: opensans_light, Arial, sans;
     color: #7A7A7A;
 }
+
+#tor_log{
+    overflow: auto;
+    height: 100px;
+}
+
+#obfsproxy_log{
+    overflow: auto;
+    height: 100px;
+}
+
 .bridge_title{
     float: left;
     margin-right: 20px;
