@@ -59,7 +59,7 @@ $( document ).ready(function(){
 				    $(entry).data('label', label);
 				    if(k%15 == 0){
 					$(".transport"+cc+transportName).append("<div style='margin-left:"+k*5.5+"px' class='date_indicator'>"+new Date(Object.keys(summaryForTransport[k])).yyyymmdd()+"</div>")
-				    }
+				   }
 
 				}
 			    });
@@ -142,15 +142,19 @@ $(this).on("mouseenter", function(d) {
     var classes = d.target.className.split(" ");
     
     if(d.target.className.indexOf("hClass") > -1){
-	var lastclass = classes[classes.length-1];
-	$('.'+lastclass).css("border", "2px solid orange").css("width", "8px");
-	
-	var classarr = lastclass.split("_");
-	var element = $(d.target).data('label');
+      var lastclass = classes[classes.length-1];
+      $('.'+lastclass).css("border", "2px solid orange").css("width", "8px");
+      
+      var classarr = lastclass.split("_");
+      var element = $(d.target).data('label');
 
-	$.each(element, function(key, value) {
-	    $("#"+key).text(value);
-	});
+      $.each(element, function(key, value) {
+          if (key === "start_time" || key === "tcp_connect_start_time") {
+            value = new Date(value*1000);
+          }
+          // XXX this can lead to code exec
+          $("#"+key).text(value);
+      });
     }
 
 })
