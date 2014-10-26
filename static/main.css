@@ -10,6 +10,17 @@ body{
     font-family: opensans_light, Arial, sans;
     color: #7A7A7A;
 }
+
+#tor_log{
+    overflow: auto;
+    height: 100px;
+}
+
+#obfsproxy_log{
+    overflow: auto;
+    height: 100px;
+}
+
 .bridge_title{
     float: left;
     margin-right: 20px;
@@ -135,7 +146,7 @@ h3{
     margin-bottom: 30px;
     color: #58A38A;
 }
-#container{
+#container {
     text-align:center;
 }
 .ui-tooltip {
@@ -227,4 +238,15 @@ body .ui-tooltip {
     margin-right: 5px;
     height: 190px;
     font-size: 11px;
+}
+
+#infobox {
+  padding-top: 30px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  color: #f1f1f1;
+  background-color: #3f51b5;
+  z-index: 999999;
 }

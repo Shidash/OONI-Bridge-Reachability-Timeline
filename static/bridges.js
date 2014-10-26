@@ -104,7 +104,7 @@ $( document ).ready(function(){
                                 var entry = $("<div onclick='window.open(\""+full_url+"\")' title='' class='result_item result_entry "+counter+" "+color_class+" "+classname+"'></div>");
                                  $(".bridge"+counter).append(entry);
 
-				 $(entry).data('label', label);
+				 $(entry).data('label', reports[i]);
 			     }
  
 			     counter+=1;
@@ -140,7 +140,9 @@ $(this).on("mouseenter", function(d) {
 	var classarr = lastclass.split("_");
 	var element = $(d.target).data('label');
 
-	$(".hover"+classarr[1]).append("<span id=highlighttext>"+element+"</span>");
+	$.each(element, function(key, value) {
+	    $("#"+key).text(value);
+	});
     }
 
 })
@@ -150,7 +152,6 @@ $(this).on("mouseenter", function(d) {
 	if(d.target.className.indexOf("hClass") > -1){
 	    var lastclass = classes[classes.length-1];
 	    $('.'+lastclass).css("width", "5px").css("border", "");
-	    $("#highlighttext").remove();
 	}
     });
 
