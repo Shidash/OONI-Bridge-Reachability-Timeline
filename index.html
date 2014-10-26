@@ -20,11 +20,9 @@
     </head>
 
     <body>
-
-        <div id="container">
-
+      <div class="container">
+        <div class="row" id="container">
             <div id="bridge_results">
-
                 <header>
                     <h1>Tor bridge reachability pixels</h1>
                 </header>
@@ -44,9 +42,114 @@
                     </ul>
                 </div>
 
+                <div id="infobox">
+                  <div class="container">
+                      <div class="row">
+
+                        <div class="col-md-4">
+
+                          <dl>
+                            <dt>Bridge reachability start time</dt>
+                            <dd id="start_time">2014-01-01 18:30</dd>
+
+                            <dt>Bridge hashed fingerprint</dt>
+                            <dd id="hashed_fingerprint">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</dd>
+                          </dl>
+
+                          <div class="row">
+
+                            <div class="col-md-6">
+                              <dl>
+                              <dt>Status</dt>
+                              <dd id="status">ok</dd>
+                              </dl>
+                            </div>
+                            
+                            <div class="col-md-6">
+                              <dl>
+                              <dt>Timeout</dt>
+                              <dd id="timeout">300</dd>
+                              </dl>
+                            </div>
+
+                          </div>
+
+                          <div class="row">
+                            <div class="col-md-6">
+                              <dl>
+                              <dt>Success</dt>
+                              <dd id="success">ok</dd>
+                              </dl>
+                            </div>
+
+                            <div class="col-md-6">
+                              <dl>
+                              <dt>Error</dt>
+                              <dd id="error">null</dd>
+                              </dl>
+                                
+                            </div>
+                          </div>
+
+                        </div>
+
+                        <div class="col-md-4">
+
+                          <div class="row">
+                            <div class="col-md-6">
+                              <dl>
+                              <dt>Transport name</dt>
+                              <dd id="transport_name">obfs3</dd>
+                              </dl>
+                            </div>
+                            <div class="col-md-6">
+                              <dl>
+                              <dt>Distributor</dt>
+                              <dd id="distributor">fte</dd>
+                              </dl>
+                            </div>
+                          </div>
+
+                              
+                          <dl>
+                            <dt>TCP connect start time</dt>
+                            <dd id="tcp_connect_start_time">2014-01-01 18:30</dd>
+
+                            <dt>TCP connect success</dt>
+                            <dd id="tcp_connect_success">ok</dd>
+
+                            <dt>TCP connect runtime</dt>
+                            <dd id="tcp_connect_runtime">100 seconds</dd>
+                          </dl>
+                        </div>
+
+                        <div class="col-md-4">
+
+                          <dl>
+                            <dt>obfsproxy log</dt>
+                            <dd id="obfsproxy_log">
+                            <pre>
+                            XXXXXXXX
+                            </pre>
+                            </dd>
+
+                            <dt>tor log</dt>
+                            <dd id="tor_log">
+                            <pre>
+                            XXXXXXXX
+                            </pre>
+                            </dd>
+                          </dl>
+
+                        </div>
+
+                      </div>
+                </div>
+              </div>
             </div>
 
         </div>
+      </div>
 
     </body>
 </html>
