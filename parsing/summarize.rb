@@ -39,7 +39,7 @@ class Summarize
         end
       end
     end
-    puts JSON.pretty_generate(summaryhash)
+    return JSON.pretty_generate(summaryhash)
   end
 
   # Groups bridges and measurements by measurement date
@@ -79,5 +79,8 @@ class Summarize
   end
 end
 
+g = Summarize.new(File.read("../data/tests/bridge_reachability/per_bridge/data.json"))
+File.write("grouped.json", g.groupByTransport)
+
 s = Summarize.new(File.read("../data/tests/bridge_reachability/per_bridge/data.json"))
-s.summarize
+File.write("summarized.json", s.summarize)
