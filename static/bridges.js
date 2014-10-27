@@ -148,7 +148,6 @@ $(this).on("mouseenter", function(d) {
 	var classarr = lastclass.split("_");
 	var element = $(d.target).data('label');
 	if(d.target.className.indexOf("transportsum") == -1){
-	    console.log(d.target.className);
             $("#showinfo").hide();
 	    $("#infobox").show();
 	}
