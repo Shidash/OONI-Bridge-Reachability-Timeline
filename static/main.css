@@ -2,30 +2,32 @@
     font-family: opensans_light;
     src: url(fonts/OpenSans-Light.ttf);
 }
+
 @font-face {
     font-family: opensans_regular;
     src: url(fonts/OpenSans-Regular.ttf);
 }
-body{
+
+body {
     font-family: opensans_light, Arial, sans;
     color: #7A7A7A;
 }
 
-#tor_log{
+#tor_log {
     overflow: auto;
     height: 100px;
 }
 
-#obfsproxy_log{
+#obfsproxy_log {
     overflow: auto;
     height: 100px;
 }
 
-.bridge_title{
+.bridge_title {
     float: left;
     margin-right: 20px;
     width: 175px;
-    text-align:left;
+    text-align: left;
     font-size: 11px;
     background: url(images/road_small.png) no-repeat 0px 5px;
     padding-left: 20px;
@@ -39,20 +41,20 @@ h4 {
     display: inline-block;
 }
 
-#highlighttext{
+#highlighttext {
     overflow: hidden;
     width: 300px;
 }
 
-.transport_summary{
+.transport_summary {
     padding-top: 10px;
     margin-left: 270px;
     overflow: hidden;
 }
 
-.result_entry{
+.result_entry {
     height: 10px;
-    width: 5px;
+    width: 6px;
     background: #ccc;
     float: left;
     margin-right: 1px;
@@ -61,94 +63,116 @@ h4 {
     top: 5px;
     margin-bottom: 5px;
 }
-.bridge_result{
+
+.bridge_result {
     overflow: hidden;
     padding-left: 75px;
     margin-bottom: 5px;
 }
-.yes{
+
+.yes {
     background: #00ff00;
 }
-.no{
+
+.no {
     background: #ff0000;
 }
 
-.offline{
+.offline {
     background: #FFA500;
 }
 
-.inconsistent{
+.inconsistent {
     background: #4B0082;
 }
 
-.maybe{
+.maybe {
     background: #ffff00;
 }
 
-.probably_no{
+.probably_no {
     background: #DFB552;
 }
-header{
+
+.no_data {
+    background: #e5e5e5;
+}
+
+header {
     text-align: left;
     margin: 40px 0;
 }
-header{
+
+header {
     font-family: opensans_light, Arial, sans;
 }
-header h1{
+
+header h1 {
     font-size: 4em;
     color: #3D3D3D;
 }
-#bridge_results{
+
+#bridge_results {
     display: inline-block;
     zoom: 1;
-    display*: inline; /* ie hack */
+    display: inline; /* ie hack */
     min-width: 900px;
-    text-align:left;
+    text-align: left;
     max-width: 1050px;
 }
-.country{
+
+.country {
     background: #F7FAF9;
     padding: 30px;
     padding-top: 10px;
     margin-bottom: 50px;
 }
-.transport{
-    
+
+.transport {
+
 }
-.donuts{
+
+.donuts {
     background: #F5FAF8;
     padding: 30px;
     padding-top: 50px;
 }
-h2{
+
+h2 {
     margin: 10px 0;
     background: url(images/charts_small.png) no-repeat 5px 10px;
     padding-left: 40px;
 }
-.timelines, .transports, .transport_graph{
+
+.timelines, .transports, .transport_graph {
     margin-bottom: 40px;
     background-color: #F7FAF9;
     padding: 10px 10px 10px 20px;
     border-radius: 4px;
 }
-.timelines ul, .transports ul{
+
+.timelines ul, .transports ul {
     margin-top: 20px;
     margin-left: 25px;
 }
-.transports, .transport_graph{
+
+.transports, .transport_graph {
     background: #FCFBF7;
 }
-.multiline .country, .multi_graphs{
+
+.multiline .country, .multi_graphs {
     background: #FCFAFC;
 }
-h3{
+
+h3 {
     margin-bottom: 30px;
     color: #58A38A;
 }
+
 #container {
-    text-align:center;
+    text-align: center;
 }
+
 .ui-tooltip {
     padding: 8px 16px;
     opacity: 0.9;
@@ -158,6 +182,7 @@ h3{
     max-width: 500px;
     word-wrap: break-word;
 }
+
 body .ui-tooltip {
     border-width: 1px;
     border-color: #D4D4D4;
@@ -166,106 +191,116 @@ body .ui-tooltip {
     font-family: opensans_regular, Arial, sans;
     line-height: 1.5em;
 }
-.result_item{
-    cursor:pointer;
+
+.result_item {
+    cursor: pointer;
 }
-.hr{
+
+.hr {
     color: #F2F2F2;
     height: 1px;
-    clear:both;
+    clear: both;
 }
-.date_indicator{
+
+.date_indicator {
     position: absolute;
     margin-top: 18px;
     font-size: 0.7em;
 }
-.tooltip_date{
+
+.tooltip_date {
     font-size: 13px;
     color: #525252;
     margin: 10px 0;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ccc;
+    /*
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ccc;
+    */
 }
-
 
 .axis path,
 .axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
 }
 
 .bar {
-  fill: steelblue;
+    fill: steelblue;
 }
 
 .x.axis path {
-  display: none;
-}
-.transport_charts, .multiline{
-    max-width:960px;
+    display: none;
 }
 
+.transport_charts, .multiline {
+    max-width: 960px;
+}
 
 .multiline_graphs .axis path,
 .multiline_graphs .axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
 }
 
 .multiline_graphs .x.axis path {
-  display: none;
+    display: none;
 }
 
 .multiline_graphs .line {
-  fill: none;
-  stroke: steelblue;
-  stroke-width: 1.5px;
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 1.5px;
 }
-.multiline, donuts{
+
+.multiline, .donuts {
     font-size: 11px;
 }
-.multiline .graph_title, .donuts{
-    font-weight:bold;
+
+.multiline .graph_title, .donuts {
+    font-weight: bold;
     font-size: 14px;
     text-transform: capitalize;
 }
-.donut_graphs{
+
+.donut_graphs {
     background: #F5FAF8;
 }
-.pie{
+
+.pie {
     margin-right: 5px;
     height: 190px;
     font-size: 11px;
 }
 
 #showinfo {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 40px;
-  color: #f1f1f1;
-  background-color: #3f51b5;
-  z-index: 999999;
-  text-align: center;
-  padding-top: 5px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    color: #f1f1f1;
+    background-color: #3f51b5;
+    z-index: 999999;
+    text-align: center;
+    padding-top: 5px;
+    display: none;
 }
 
 #infobox {
-  padding-top: 30px;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  color: #f1f1f1;
-  background-color: #3f51b5;
-  z-index: 999999;
-  display: none;
-  font-family: opensans_light, Arial, sans;
+    padding-top: 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: #f1f1f1;
+    background-color: #3f51b5;
+    z-index: 999999;
+    font-family: opensans_light, Arial, sans-serif;
+    display: none;
 }
 
 #main {
-  margin-top: 40px;
+    margin-top: 40px;
 }
